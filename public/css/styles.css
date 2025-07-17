@@ -249,13 +249,18 @@ body {
   }
 
   /* .review-items {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  } */
+    order: 2;
+  }  */
 
-  .review {
+  /* .side-by-side{
     padding: 1.5rem;
+    order: 2;
+  } */
+  /* .side-by-side{
+    background-color: yellow;
+  } */
+  .reviews{
+    order: 2;
   }
 }
 
