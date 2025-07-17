@@ -214,6 +214,30 @@ body {
   }
 }
 
+.upgrade-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two items per row */
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Optional: Style each upgrade item */
+.upgrade {
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Responsive fallback: stack items on small screens */
+@media (max-width: 600px) {
+  .upgrade-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 
 /* Larger screens */
@@ -224,11 +248,11 @@ body {
     align-items: center;
   }
 
-  .review-items {
+  /* .review-items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-  }
+  } */
 
   .review {
     padding: 1.5rem;
