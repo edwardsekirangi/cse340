@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS public.account (
     CONSTRAINT account_pkey PRIMARY KEY (account_id)
 );
 -- Data for table `classification`
-INSERT INTO public.classification (classificaton_name)
+INSERT INTO public.classification (classification_name)
 VALUES ('Custom'),
     ('Sport'),
     ('SUV'),
@@ -234,7 +234,6 @@ VALUES (
         'White',
         5
     );
-
 -- Query 4
 -- Updating inv_description for a specific vehicle
 UPDATE inventory
@@ -245,7 +244,6 @@ SET inv_description = REPLACE(
     )
 WHERE inv_make = 'GM'
     AND inv_model = 'Hummer';
-
 -- Query 6
 -- Updating image paths for all vehicles
 UPDATE inventory
