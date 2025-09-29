@@ -12,6 +12,8 @@ const app = express();
 const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
+const utilities = require("./utilities/");
+const errorRoute = require("./routes/errorRoute");
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -27,8 +29,31 @@ app.set("layout", "./layouts/layout"); // not at views root
 app.use(static);
 
 //Index route
-app.get("/", baseController.buildHome);
+app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
+app.use("/error", errorRoute);
+
+//Trying a 404 route - must be last route
+app.use(async (req, res, next) => {
+    next({ status: 404, message: "Sorry, we couldn't find that!" });
+});
+
+//Express error handling
+//Place after all other app.use and routes calls
+app.use(async (error, req, res, next) => {
+    let nav = await utilities.getNav();
+    console.error(`Error at: ${req.originalUrl} : ${error.message}`);
+    if (error.status == 404) {
+        message = error.message;
+    } else {
+        message = "Uh oh! Something went wrong!";
+    }
+    res.render("errors/error", {
+        title: error.status || "Server Error",
+        message,
+        nav,
+    });
+});
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
