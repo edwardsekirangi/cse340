@@ -150,6 +150,27 @@ Util.buildVehicleDetail = async function (data) {
     return detail;
 };
 
+//Build classification <select> with sticky selection
+/* Build classification <select> with sticky selection */
+Util.buildClassificationList = async function (classification_id = null) {
+    const data = await invModel.getClassifications(); // returns { rows: [...] }
+    let classificationList =
+        '<select name="classification_id" id="classificationList" required>';
+    classificationList += "<option value=''>Choose a Classification</option>";
+    data.rows.forEach((row) => {
+        classificationList += '<option value="' + row.classification_id + '"';
+        if (
+            classification_id != null &&
+            row.classification_id == classification_id
+        ) {
+            classificationList += " selected ";
+        }
+        classificationList += ">" + row.classification_name + "</option>";
+    });
+    classificationList += "</select>";
+    return classificationList;
+};
+
 //Middleware to handle errors
 //Wrap other functions in this for general error handling
 Util.handleErrors = (fn) => (req, res, next) =>

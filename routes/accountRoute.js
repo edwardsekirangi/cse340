@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const utilities = require("../utilities/index");
 const accountController = require("../controllers/accountController");
-const regvalidate = require("../utilities/account-validation");
-const {validationResult} = require("express-validator");
+const accountValidate = require("../utilities/account-validation");
+const { validationResult } = require("express-validator");
 //Controller function goes here
 
 // Inventory Routes
@@ -20,10 +20,18 @@ router.get(
 
 // Registration route with validation
 router.post(
-  "/register",
-  regvalidate.registrationRules(),
-  regvalidate.checkRegData,
-  utilities.handleErrors(accountController.registerAccount)
+    "/register",
+    accountValidate.registrationRules(),
+    accountValidate.checkRegData,
+    utilities.handleErrors(accountController.registerAccount)
+);
+
+//Process the login attempt
+router.post(
+    "/login",
+    accountValidate.loginRules(),
+    accountValidate.checkLoginData,
+    utilities.handleErrors(accountController.accountLogin)
 );
 
 module.exports = router;

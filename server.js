@@ -30,6 +30,7 @@ const pool = require("./database/");
 //app.use(express.json());
 
 //Session middleware
+
 app.use(
     session({
         store: new (require("connect-pg-simple")(session))({
@@ -79,18 +80,12 @@ app.use(async (req, res, next) => {
 
 //Express error handling
 //Place after all other app.use and routes calls
-app.use(async (error, req, res, next) => {
-    let nav = await utilities.getNav();
-    console.error(`Error at: ${req.originalUrl} : ${error.message}`);
-    if (error.status == 404) {
-        message = error.message;
-    } else {
-        message = "Uh oh! Something went wrong!";
-    }
-    res.render("errors/error", {
-        title: error.status || "Server Error",
-        message,
-        nav,
+// 404 handler must come last
+app.use((req, res, next) => {
+    res.status(404).render("errors/error", {
+        title: "404 Not Found",
+        message: "Sorry, we couldn't find that!",
+        nav: [], // or await utilities.getNav()
     });
 });
 /* ***********************

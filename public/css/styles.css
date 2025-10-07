@@ -110,6 +110,58 @@ nav a:hover {
     background-color: #0055aa; /* Slightly lighter blue on hover */
 }
 
+/* Other links designs */
+.man a {
+    color: #0d6efd;
+    text-decoration: none;
+    transition:
+        color 200ms ease,
+        text-decoration-color 200ms ease;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+}
+
+.man a:hover {
+    color: #0a58ca;
+    text-decoration: underline;
+    text-decoration-color: #0a58ca;
+}
+
+.man {
+    position: relative;
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.man::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: currentColor;
+    transition: width 200ms ease;
+}
+
+.man:hover::after {
+    width: 100%;
+}
+.man {
+    color: #0d6efd;
+    text-decoration: none;
+    transition:
+        color 200ms ease,
+        text-shadow 200ms ease,
+        transform 200ms ease;
+}
+
+.man:hover {
+    color: #0a58ca;
+    text-shadow: 0 0 10px rgba(13, 110, 253, 0.35);
+    transform: translateY(-1px);
+}
+
 /* public/css/styles.css */
 .hero {
     position: relative;
@@ -393,12 +445,27 @@ h1 {
 }
 
 .flash-message {
-    background: #ffe0e0;
-    color: #a00;
-    padding: 0.8rem;
+    margin: 1rem 0;
+    padding: 1rem 1.25rem;
+    border: 2px solid #9b2c2c; /* Red border */
+    background: linear-gradient(
+        135deg,
+        #fed7d7,
+        #feb2b2
+    ); /* Soft red gradient */
+    color: #9b2c2c; /* Dark red text */
     border-radius: 6px;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeInScale 0.6s ease-out;
+}
+
+.flash-message::before {
+    content: "⚠️";
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
 }
 
 .login-form label {
@@ -410,63 +477,77 @@ h1 {
 
 .login-form input {
     width: 100%;
-    padding: 0.7rem;
+    padding: 0.7rem 0.8rem;
     margin-top: 0.3rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    color: #111827;
     font-size: 1rem;
-    height: 30px;
+    transition:
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
 }
 
 .login-form input:focus {
-    border-color: #0077cc;
+    border-color: #60a5fa;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.15);
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+    background: #ffffff;
 }
 
 /* Invalid state */
 .login-form input:required:invalid {
-    border-color: #e63946; /* red border */
-    background-color: #ffe5e5; /* light red background */
-    box-shadow: 0 0 5px rgba(230, 57, 70, 0.5);
+    border-color: #fca5a5; /* light red border */
+    background-color: #fff5f5; /* light red background */
+    box-shadow: 0 0 0 3px rgba(252, 165, 165, 0.25);
 }
 
 /* Valid state */
 .login-form input:required:valid {
-    border-color: #2a589d; /* green border */
-    background-color: #e6fffa; /* light green background */
-    box-shadow: 0 0 5px rgba(42, 157, 143, 0.5);
+    border-color: #34d399; /* green border */
+    background-color: #f0fdfa; /* light green background */
+    box-shadow: 0 0 5px rgba(52, 211, 153, 0.5);
 }
 
 /* Focus states for better UX */
 .login-form input:focus:invalid {
     outline: none;
-    border-color: #d62828;
-    box-shadow: 0 0 6px rgba(214, 40, 40, 0.6);
+    border-color: #e53e3e;
+    box-shadow: 0 0 6px rgba(229, 62, 62, 0.6);
 }
 
 .login-form input:focus:valid {
     outline: none;
-    border-color: #0667d6;
-    box-shadow: 0 0 6px rgba(6, 214, 160, 0.6);
+    border-color: #38a169;
+    box-shadow: 0 0 6px rgba(56, 161, 105, 0.6);
 }
 
 .login-form button {
     margin-top: 1.5rem;
     width: 100%;
-    padding: 0.9rem;
-    background: #0077cc;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    background: #2563eb;
+    color: #ffffff;
+    border: 1px solid #2563eb;
+    border-radius: 8px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        transform 120ms ease;
 }
 
 .login-form button:hover {
-    background: #005fa3;
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    transform: translateY(-1px);
     cursor: pointer;
 }
+
 /* Container keeps checkbox + label inline */
 .form-check {
     display: flex;
@@ -496,7 +577,7 @@ h1 {
 }
 
 .register-link a {
-    color: #0077cc;
+    color: #2563eb;
     text-decoration: none;
     font-weight: 600;
 }
@@ -529,38 +610,47 @@ h1 {
 /* Inputs */
 .register-form input {
     width: 100%;
-    padding: 0.9rem; /* slightly bigger boxes */
-    border: 1.5px solid #ccc;
-    border-radius: 6px;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    color: #111827;
     font-size: 1rem;
     transition:
-        border-color 0.3s,
-        box-shadow 0.3s;
-    height: 30px;
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
 }
 
 .register-form input:focus {
-    border-color: #0077cc;
+    border-color: #60a5fa;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.15);
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+    background: #ffffff;
 }
 
 /* Button */
 .register-form button {
     margin-top: 1rem;
     width: 100%; /* full width on mobile */
-    padding: 0.9rem;
-    background: #0077cc;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    background: #2563eb;
+    color: #ffffff;
+    border: 1px solid #2563eb;
+    border-radius: 8px;
     font-size: 1rem;
-    font-weight: 600;
-    transition: background 0.3s;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        transform 120ms ease;
 }
 
 .register-form button:hover {
-    background: #005fa3;
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    transform: translateY(-1px);
     cursor: pointer;
 }
 
@@ -572,7 +662,7 @@ h1 {
 }
 
 .login-link a {
-    color: #0077cc;
+    color: #2563eb;
     text-decoration: none;
     font-weight: 600;
 }
@@ -583,9 +673,9 @@ h1 {
 /* Base input style */
 .register-form input {
     width: 100%;
-    padding: 0.9rem;
-    border: 2px solid #ccc;
-    border-radius: 6px;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
     font-size: 1rem;
     transition:
         border-color 0.3s,
@@ -594,29 +684,374 @@ h1 {
 
 /* Invalid state */
 .register-form input:required:invalid {
-    border-color: #e63946; /* red border */
-    background-color: #ffe5e5; /* light red background */
-    box-shadow: 0 0 5px rgba(230, 57, 70, 0.5);
+    border-color: #fca5a5; /* light red border */
+    background-color: #fff5f5; /* light red background */
+    box-shadow: 0 0 0 3px rgba(252, 165, 165, 0.25);
 }
 
 /* Valid state */
 .register-form input:required:valid {
-    border-color: #2a589d; /* green border */
-    background-color: #e6fffa; /* light green background */
-    box-shadow: 0 0 5px rgba(42, 157, 143, 0.5);
+    border-color: #34d399; /* green border */
+    background-color: #f0fdfa; /* light green background */
+    box-shadow: 0 0 5px rgba(52, 211, 153, 0.5);
 }
 
 /* Focus states for better UX */
 .register-form input:focus:invalid {
     outline: none;
-    border-color: #d62828;
-    box-shadow: 0 0 6px rgba(214, 40, 40, 0.6);
+    border-color: #e53e3e;
+    box-shadow: 0 0 6px rgba(229, 62, 62, 0.6);
 }
 
 .register-form input:focus:valid {
     outline: none;
-    border-color: #0667d6;
-    box-shadow: 0 0 6px rgba(6, 214, 160, 0.6);
+    border-color: #38a169;
+    box-shadow: 0 0 6px rgba(56, 161, 105, 0.6);
+}
+/* ********************************************** */
+/* Flash messages styles */
+/* .flash-messages for good */
+/* .flash-message for bad */
+/* ********************************************** */
+.flash-messages {
+    margin: 1rem 0;
+    padding: 1rem 1.25rem;
+    border: 2px solid #163391; /* Green border */
+    background: linear-gradient(
+        135deg,
+        #d4edda,
+        #c3e6cb
+    ); /* Soft green gradient */
+    color: #004080; /* Dark blue text  */
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeInScale 0.6s ease-out;
+}
+
+.flash-messages::before {
+    content: "🎉";
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.flash-messages ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flash-messages li {
+    margin: 0.25rem 0;
+}
+
+/* form for classification */
+/* Container: centered, card-like */
+.form-card {
+    margin: 1.5rem auto;
+    padding: 1.25rem 1.5rem;
+    max-width: 640px; /* prevents full-width on desktop */
+    width: 92%; /* fluid on mobile */
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Title */
+.form-card h1 {
+    margin: 0 0 0.75rem;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    color: #111827;
+}
+
+/* Form layout */
+#addClassificationForm {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+/* Label and input */
+#addClassificationForm label {
+    font-weight: 600;
+    color: #374151;
+}
+
+#addClassificationForm input[type="text"] {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    color: #111827;
+    transition:
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
+}
+
+#addClassificationForm input[type="text"]::placeholder {
+    color: #9ca3af;
+}
+
+#addClassificationForm input[type="text"]:focus {
+    outline: none;
+    border-color: #60a5fa;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+}
+
+/* Invalid state */
+#addClassificationForm input[type="text"]:invalid:not(:placeholder-shown) {
+    border-color: #fca5a5;
+    background-color: #fff5f5;
+    box-shadow: 0 0 0 3px rgba(252, 165, 165, 0.25);
+}
+
+/* Valid state */
+#addClassificationForm input[type="text"]:valid {
+    border-color: #34d399;
+    background-color: #f0fdfa;
+    box-shadow: 0 0 5px rgba(52, 211, 153, 0.5);
+}
+
+/* Help text / hint */
+.input-hint {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* Submit button */
+#addClassificationForm button[type="submit"] {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: 1px solid #2563eb;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        transform 120ms ease;
+}
+
+#addClassificationForm button[type="submit"]:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+#addClassificationForm button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+#addClassificationForm button[type="submit"]:disabled {
+    background: #9ca3af;
+    border-color: #9ca3af;
+    cursor: not-allowed;
+}
+/* Subtle entrance animation */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Adding new vehicle form */
+/* Base card container */
+.form-card {
+    margin: 1rem auto;
+    padding: 1.25rem 1.5rem;
+    max-width: 640px; /* keeps it narrow on large screens */
+    width: 92%; /* fluid on mobile */
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Title */
+.form-card h1 {
+    margin: 0 0 1rem;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    color: #111827;
+}
+
+/* Flash messages */
+.flash-messages {
+    margin: 0.75rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.flash-messages.success {
+    border: 1px solid #34d399;
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.flash-messages.error {
+    border: 1px solid #fca5a5;
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.flash-messages .notice {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Form layout */
+#addInventoryForm {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+}
+
+/* Labels */
+#addInventoryForm label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+/* Inputs and textarea */
+#addInventoryForm input,
+#addInventoryForm textarea,
+#addInventoryForm select {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    color: #111827;
+    font-size: 0.95rem;
+    transition:
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
+}
+
+#addInventoryForm input:focus,
+#addInventoryForm textarea:focus,
+#addInventoryForm select:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+/* Textarea sizing */
+#addInventoryForm textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Submit button */
+#addInventoryForm button[type="submit"] {
+    justify-self: start;
+    padding: 0.65rem 1.25rem;
+    border: 1px solid #2563eb;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        transform 120ms ease;
+}
+
+#addInventoryForm button[type="submit"]:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+#addInventoryForm button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+#addInventoryForm button[type="submit"]:disabled {
+    background: #9ca3af;
+    border-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* Validation code for the form */
+/* Base input/textarea/select styles (already defined) */
+#addInventoryForm input,
+#addInventoryForm textarea,
+#addInventoryForm select {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    color: #111827;
+    font-size: 0.95rem;
+    transition:
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
+}
+
+/* Focus state */
+#addInventoryForm input:focus,
+#addInventoryForm textarea:focus,
+#addInventoryForm select:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+/* ✅ Valid state */
+#addInventoryForm input:valid,
+#addInventoryForm textarea:valid,
+#addInventoryForm select:valid {
+    border-color: #34d399;
+    background: #ecfdf5;
+}
+
+/* ❌ Invalid state (but only after user interaction) */
+#addInventoryForm input:invalid:not(:placeholder-shown),
+#addInventoryForm textarea:invalid:not(:placeholder-shown),
+#addInventoryForm select:invalid {
+    border-color: #f87171;
+    background: #fef2f2;
+    box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.25);
+}
+
+/* Error message text (server-side validation feedback) */
+.input-error {
+    font-size: 0.85rem;
+    color: #b91c1c;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Success message text (optional inline feedback) */
+.input-success {
+    font-size: 0.85rem;
+    color: #047857;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 /* Footer styles */
@@ -814,7 +1249,6 @@ footer a:hover {
         .login-form input {
             flex: 1; /* input takes remaining space */
             max-width: 50%; /* cap the size */
-            height: 20px;
             padding: 1rem; /* bigger box */
             font-size: 1.05rem;
             /* background-color: orangered; */
@@ -862,7 +1296,6 @@ footer a:hover {
         margin: 0.3rem auto;
         padding: 1rem; /* bigger boxes on desktop */
         font-size: 1.05rem;
-        height: 10px;
         /* background-color: orangered; */
     }
 
@@ -872,6 +1305,105 @@ footer a:hover {
         padding: 0.9rem 2rem;
         display: block;
         margin: 1.5rem auto 0; /* center button */
+    }
+
+    /* Flash dislay on larger screens */
+    /* ***************************************** */
+    .flash-messages {
+        margin: 1rem auto; /* center horizontally */
+        padding: 1rem 1.25rem;
+        border: 2px solid #1e208b;
+        background: linear-gradient(135deg, #d4edda, #c3e6cb);
+        color: #004080;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+        animation: fadeInScale 0.6s ease-out;
+
+        max-width: 600px; /* limit width on desktop */
+        width: 90%; /* responsive on smaller screens */
+    }
+
+    /* Optional: make it even narrower on very large screens */
+    @media (min-width: 1200px) {
+        .flash-messages {
+            max-width: 500px;
+        }
+    }
+
+    .flash-messages::before {
+        content: "🎉";
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .flash-messages .notice {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .flash-messages .notice li {
+        margin: 0.25rem 0;
+    }
+
+    @keyframes fadeInScale {
+        0% {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* Flash message for errors */
+    .flash-message {
+        margin: 1rem auto;
+        padding: 1rem 1.25rem;
+        border: 2px solid #9b2c2c; /* Red border */
+        background: linear-gradient(
+            135deg,
+            #fed7d7,
+            #feb2b2
+        ); /* Soft red gradient */
+        color: #9b2c2c; /* Dark red text */
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+        animation: fadeInScale 0.6s ease-out;
+        max-width: 600px;
+    }
+
+    .flash-message::before {
+        content: "⚠️";
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+    }
+
+    /* Desktop refinements */
+    @media (min-width: 640px) {
+        #addInventoryForm {
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1.25rem;
+        }
+
+        /* Make description span both columns */
+        #addInventoryForm label[for="invDescription"],
+        #addInventoryForm textarea {
+            grid-column: 1 / -1;
+        }
+
+        /* Submit button aligned nicely */
+        #addInventoryForm button[type="submit"] {
+            grid-column: 1 / -1;
+            justify-self: end;
+        }
     }
 }
 

@@ -1,0 +1,70 @@
+
+<div class="form-card">
+  <h1>Add New Vehicle</h1>
+
+  <% if (success) { %>
+    <div class="flash-messages">
+      <ul class="notice"><li><%= success %></li></ul>
+    </div>
+  <% } %>
+
+  <% if (error) { %>
+    <div class="flash-message">
+      <ul class="notice"><li><%= error %></li></ul>
+    </div>
+  <% } %>
+
+  <% if (errors && errors.length > 0) { %>
+    <div class="flash-message">
+      <ul class="notice">
+        <% errors.forEach(e => { %><li><%= e.msg %></li><% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <form id="addInventoryForm" action="/inv/add-inventory" method="POST" novalidate>
+    <!-- Classification select (prebuilt HTML) -->
+    <label for="classificationList">Classification</label>
+    <%- classificationList %>
+
+    <label for="invMake">Make</label>
+    <input id="invMake" name="inv_make" type="text" required
+      value="<%= inv_make %>" maxlength="50" title="Enter vehicle make">
+
+    <label for="invModel">Model</label>
+    <input id="invModel" name="inv_model" type="text" required
+      value="<%= inv_model %>" maxlength="50" title="Enter vehicle model">
+
+    <label for="invDescription">Description</label>
+    <textarea id="invDescription" name="inv_description" required maxlength="2000"
+      title="Describe the vehicle"><%= inv_description %></textarea>
+
+    <label for="invImage">Image path</label>
+    <input id="invImage" name="inv_image" type="text" required
+      value="<%= inv_image %>" maxlength="255"
+      title="Path to main image (e.g., /images/vehicles/no-image-available.png)">
+
+    <label for="invThumbnail">Thumbnail path</label>
+    <input id="invThumbnail" name="inv_thumbnail" type="text" required
+      value="<%= inv_thumbnail %>" maxlength="255"
+      title="Path to thumbnail (e.g., /images/vehicles/no-image-available-tn.png)">
+
+    <label for="invPrice">Price</label>
+    <input id="invPrice" name="inv_price" type="number" min="0" step="0.01" required
+      value="<%= inv_price %>" title="Enter a positive price">
+
+    <label for="invYear">Year</label>
+    <input id="invYear" name="inv_year" type="number" min="1886" max="2100" required
+      value="<%= inv_year %>" title="Enter a valid year">
+
+    <label for="invMiles">Miles</label>
+    <input id="invMiles" name="inv_miles" type="number" min="0" step="1" required
+      value="<%= inv_miles %>" title="Enter miles (non-negative integer)">
+
+    <label for="invColor">Color</label>
+    <input id="invColor" name="inv_color" type="text" required maxlength="30"
+      value="<%= inv_color %>" title="Enter color">
+
+    <button type="submit">Add Vehicle</button>
+  </form>
+</div>

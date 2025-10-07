@@ -1,7 +1,27 @@
 <h1><%= title %></h1>
 
 <!-- Flash message area -->
-<%- messages() %>
+<!-- Flash message area -->
+<% if (Array.isArray(messages) && messages.length > 0) { %>
+  <div class="flash-messages">
+    <ul class="notice">
+      <% messages.forEach(msg => { %>
+        <li><%= msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<% if (errors) { %>
+  <div class="flash-message">
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
 
 <!-- Login form -->
 <form action="/account/login" method="post" class="login-form">

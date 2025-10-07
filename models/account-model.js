@@ -22,4 +22,16 @@ async function registerAccount(
     }
 }
 
-module.exports = { registerAccount };
+async function checkExistingEmail(account_email) {
+    try {
+        const sql =
+            "SELECT account_email FROM public.account WHERE account_email = $1";
+        const result = await pool.query(sql, [account_email]);
+        return result.rowCount > 0;
+    } catch (error) {
+        console.error("DB query error:", error);
+        return error.message;
+    }
+}
+
+module.exports = { registerAccount, checkExistingEmail };
