@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model");
+
 const Util = {};
 
 /* ************************
@@ -148,7 +149,6 @@ Util.buildVehicleDetail = async function (data) {
     }
     return detail;
 };
-
 
 //Middleware to handle errors
 //Wrap other functions in this for general error handling

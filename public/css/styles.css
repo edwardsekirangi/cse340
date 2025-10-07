@@ -374,6 +374,252 @@ button:hover {
     border-radius: 8px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+/* Login design */
+/* ******************************* */
+.form-container {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%; /* full width on small screens */
+}
+
+h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.flash-message {
+    background: #ffe0e0;
+    color: #a00;
+    padding: 0.8rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.login-form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.7rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    height: 30px;
+}
+
+.login-form input:focus {
+    border-color: #0077cc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.15);
+}
+
+/* Invalid state */
+.login-form input:required:invalid {
+    border-color: #e63946; /* red border */
+    background-color: #ffe5e5; /* light red background */
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.5);
+}
+
+/* Valid state */
+.login-form input:required:valid {
+    border-color: #2a589d; /* green border */
+    background-color: #e6fffa; /* light green background */
+    box-shadow: 0 0 5px rgba(42, 157, 143, 0.5);
+}
+
+/* Focus states for better UX */
+.login-form input:focus:invalid {
+    outline: none;
+    border-color: #d62828;
+    box-shadow: 0 0 6px rgba(214, 40, 40, 0.6);
+}
+
+.login-form input:focus:valid {
+    outline: none;
+    border-color: #0667d6;
+    box-shadow: 0 0 6px rgba(6, 214, 160, 0.6);
+}
+
+.login-form button {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.9rem;
+    background: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.login-form button:hover {
+    background: #005fa3;
+    cursor: pointer;
+}
+/* Container keeps checkbox + label inline */
+.form-check {
+    display: flex;
+    align-items: center; /* vertically centers checkbox with text */
+    gap: 0.4rem; /* small space between box and words */
+    font-size: 0.95rem; /* slightly smaller text */
+}
+
+/* Make checkbox smaller */
+.form-check input[type="checkbox"] {
+    width: 16px; /* shrink size */
+    height: 16px;
+    margin: 0; /* remove default spacing */
+    cursor: pointer;
+}
+
+/* Label styling */
+.form-check label {
+    cursor: pointer; /* clicking text also toggles checkbox */
+    color: #444;
+}
+
+.register-link {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.register-link a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Register design */
+/* ******************************************* */
+/* Registration form container */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Form groups */
+.register-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.register-form label {
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 0.4rem;
+}
+
+/* Inputs */
+.register-form input {
+    width: 100%;
+    padding: 0.9rem; /* slightly bigger boxes */
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition:
+        border-color 0.3s,
+        box-shadow 0.3s;
+    height: 30px;
+}
+
+.register-form input:focus {
+    border-color: #0077cc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.15);
+}
+
+/* Button */
+.register-form button {
+    margin-top: 1rem;
+    width: 100%; /* full width on mobile */
+    padding: 0.9rem;
+    background: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.register-form button:hover {
+    background: #005fa3;
+    cursor: pointer;
+}
+
+/* Login link */
+.login-link {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.login-link a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+/* Base input style */
+.register-form input {
+    width: 100%;
+    padding: 0.9rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition:
+        border-color 0.3s,
+        box-shadow 0.3s;
+}
+
+/* Invalid state */
+.register-form input:required:invalid {
+    border-color: #e63946; /* red border */
+    background-color: #ffe5e5; /* light red background */
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.5);
+}
+
+/* Valid state */
+.register-form input:required:valid {
+    border-color: #2a589d; /* green border */
+    background-color: #e6fffa; /* light green background */
+    box-shadow: 0 0 5px rgba(42, 157, 143, 0.5);
+}
+
+/* Focus states for better UX */
+.register-form input:focus:invalid {
+    outline: none;
+    border-color: #d62828;
+    box-shadow: 0 0 6px rgba(214, 40, 40, 0.6);
+}
+
+.register-form input:focus:valid {
+    outline: none;
+    border-color: #0667d6;
+    box-shadow: 0 0 6px rgba(6, 214, 160, 0.6);
+}
+
+/* Footer styles */
 
 footer {
     background-color: #004080; /* Deep blue */
@@ -389,12 +635,12 @@ footer p {
     margin: 0;
 }
 footer a {
-  font-size: 0.8rem;
-  color: #ffffff;
-  text-decoration: underline;
+    font-size: 0.8rem;
+    color: #ffffff;
+    text-decoration: underline;
 }
 footer a:hover {
-  color: #ffcaca;
+    color: #ffcaca;
 }
 
 /* Larger screen views */
@@ -434,37 +680,37 @@ footer a:hover {
         border: initial;
     }
     /* vehicle detail page for larger displays */
- .vehicleDetail{
-    padding: 230px;
-    margin: 0;
-    background-color: #f9f9f9;
-    border-radius: 0%;
- }
- .vehicle-card-box {
-    /* max-width: 900px; */
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    padding: 24px;
-  }
+    .vehicleDetail {
+        padding: 230px;
+        margin: 0;
+        background-color: #f9f9f9;
+        border-radius: 0%;
+    }
+    .vehicle-card-box {
+        /* max-width: 900px; */
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        padding: 24px;
+    }
 
-  .vehicleImage {
-    flex: 1.2; /* Increase space allocated to image */
-  }
+    .vehicleImage {
+        flex: 1.2; /* Increase space allocated to image */
+    }
 
-  .vehicleImage img {
-    width: 100%;
-    height: auto;
-    max-height: 500px; /* Optional: cap height */
-    object-fit: cover; /* Ensures image fills space nicely */
-    border-radius: 8px;
-  }
+    .vehicleImage img {
+        width: 100%;
+        height: auto;
+        max-height: 500px; /* Optional: cap height */
+        object-fit: cover; /* Ensures image fills space nicely */
+        border-radius: 8px;
+    }
 
-  .vehicleInfo {
-    flex: 1;
-    text-align: left;
-    padding: 0;
-  }
+    .vehicleInfo {
+        flex: 1;
+        text-align: left;
+        padding: 0;
+    }
 
     .vehicleInfo h2 {
         font-size: 2rem;
@@ -527,6 +773,105 @@ footer a:hover {
 
     .reviews {
         order: 2;
+    }
+
+    /* Login display for larger screens */
+    /* Desktop and larger screens */
+    @media (min-width: 768px) {
+        body {
+            justify-content: center;
+            align-items: center;
+            /* background: linear-gradient(135deg, #0077cc, #00b4d8); */
+        }
+
+        .form-container {
+            max-width: 400px; /* narrower card on desktop */
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .login-form .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* center the whole row */
+            margin: 1rem 0;
+        }
+
+        .login-form label {
+            flex: 0 0 120px; /* fixed width for labels */
+            margin: 0;
+            text-align: center;
+            padding: 1rem;
+            /* background-color: yellow; */
+        }
+
+        .login-form input {
+            flex: 1; /* input takes remaining space */
+            max-width: 50%; /* cap the size */
+            height: 20px;
+            padding: 1rem; /* bigger box */
+            font-size: 1.05rem;
+            /* background-color: orangered; */
+            margin-left: 25%;
+        }
+
+        .login-form button {
+            width: auto;
+            min-width: 160px;
+            padding: 0.9rem 2rem;
+            display: block;
+            margin: 1.5rem auto 0; /* center the button */
+        }
+    }
+
+    /* Optional subtle fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Register page desktop design*/
+    /* ************************************************* */
+    .register-form .form-group {
+        flex-direction: column; /* label + input on same line */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .register-form label {
+        margin: 0;
+        text-align: center;
+        padding-right: 1rem;
+        /* background-color: yellow; */
+    }
+
+    .register-form input {
+        max-width: 50%; /* cap input width */
+        margin: 0.3rem auto;
+        padding: 1rem; /* bigger boxes on desktop */
+        font-size: 1.05rem;
+        height: 10px;
+        /* background-color: orangered; */
+    }
+
+    .register-form button {
+        width: auto;
+        min-width: 160px;
+        padding: 0.9rem 2rem;
+        display: block;
+        margin: 1.5rem auto 0; /* center button */
     }
 }
 

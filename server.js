@@ -14,6 +14,44 @@ const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const utilities = require("./utilities/");
 const errorRoute = require("./routes/errorRoute");
+//Body parser
+const bodyParser = require("body-parser");
+
+//Account route
+const accountRoute = require("./routes/accountRoute");
+//session data
+const session = require("express-session");
+const pool = require("./database/");
+
+/* ***********************
+ * Middleware
+ *************************/
+//app.use(express.urlencoded({ extended: true }));
+//app.use(express.json());
+
+//Session middleware
+app.use(
+    session({
+        store: new (require("connect-pg-simple")(session))({
+            createTableIfMissing: true,
+            pool,
+        }),
+        secret: process.env.SESSION_SECRET,
+        resave: true,
+        saveUninitialized: false,
+        name: "sessionId",
+    })
+);
+
+//Express Messages Middleware
+app.use(require("connect-flash")());
+app.use(function (req, res, next) {
+    res.locals.messages = require("express-messages")(req, res);
+    next();
+});
+//Body Parser Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -31,6 +69,7 @@ app.use(static);
 //Index route
 app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
+app.use("/account", accountRoute);
 app.use("/error", errorRoute);
 
 //Trying a 404 route - must be last route
@@ -60,6 +99,5 @@ app.use(async (error, req, res, next) => {
  *************************/
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
+    console.log(`App listening on port ${PORT}`);
 });
-
