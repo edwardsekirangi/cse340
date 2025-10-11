@@ -1053,6 +1053,67 @@ h1 {
     margin-top: -0.5rem;
     margin-bottom: 0.5rem;
 }
+/* ******************************************************* */
+/* Inventory table design */
+/* ===== Mobile-first Inventory Table ===== */
+#inventoryDisplay {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Base table cells */
+#inventoryDisplay th,
+#inventoryDisplay td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Mobile-first: stack rows like cards */
+#inventoryDisplay,
+#inventoryDisplay thead,
+#inventoryDisplay tbody,
+#inventoryDisplay th,
+#inventoryDisplay td,
+#inventoryDisplay tr {
+    display: block;
+    width: 100%;
+}
+
+#inventoryDisplay th {
+    font-size: 1rem; /* clear but not overwhelming on small screens */
+    font-weight: 600; /* bold enough to stand out */
+    color: #222; /* dark text for readability */
+    padding: 0.75rem; /* comfortable touch spacing */
+    text-align: left;
+    background-color: #f4f4f4; /* light gray background for contrast */
+    border-bottom: 2px solid #ddd;
+}
+
+#inventoryDisplay tr {
+    margin-bottom: 1rem;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    padding: 0.5rem;
+}
+
+#inventoryDisplay td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+}
+
+#inventoryDisplay td::before {
+    content: attr(data-label); /* use data-label attribute for headers */
+    font-weight: 600;
+    color: #555;
+}
 
 /* Footer styles */
 
@@ -1404,6 +1465,56 @@ footer a:hover {
             grid-column: 1 / -1;
             justify-self: end;
         }
+    }
+
+    /* ===== Larger screens (tablet/desktop) ===== */
+
+    #inventoryDisplay,
+    #inventoryDisplay thead,
+    #inventoryDisplay tbody,
+    #inventoryDisplay th,
+    #inventoryDisplay td,
+    #inventoryDisplay tr {
+        display: table;
+    }
+
+    #inventoryDisplay {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    /* #inventoryDisplay thead {
+        display: table-header-group;
+        background-color: #2c3e50;
+        color: #e7e8f5;
+    } */
+
+    #inventoryDisplay th {
+        font-size: 1.1rem;
+        font-weight: 700;
+        background-color: #f8f8f8; /* darker header background */
+        color: #0a0a0a; /* white text for contrast */
+        letter-spacing: 0.5px;
+        padding: 1rem;
+    }
+
+    #inventoryDisplay td {
+        display: table-cell;
+        padding: 12px 16px;
+    }
+
+    #inventoryDisplay tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    #inventoryDisplay tr:hover {
+        background-color: #f1f7ff;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    #inventoryDisplay td::before {
+        content: none; /* remove labels on larger screens */
     }
 }
 

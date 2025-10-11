@@ -26,6 +26,13 @@ async function getInventoryByClassificationId(classification_id) {
     }
 }
 
+// Get a single inventory item by its ID
+async function getInventoryById(inv_id) {
+  const sql = "SELECT * FROM inventory WHERE inv_id = $1";
+  const data = await pool.query(sql, [inv_id]);
+  return data.rows[0]; // return one object
+}
+
 //Adding a new function to get vehicle by inv_id
 async function getVehicleById(inv_id) {
     try {
@@ -98,4 +105,5 @@ module.exports = {
     addClassification,
     getClassifications,
     addInventory,
+    getInventoryById,
 };

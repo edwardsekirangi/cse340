@@ -42,4 +42,16 @@ router.post(
     invValidate.checkInventoryData,
     Util.handleErrors(invController.addInventory)
 );
+
+router.get(
+    "/getInventory/:classification_id",
+    Util.handleErrors(invController.getInventoryJSON)
+);
+
+// Route to deliver the edit inventory view
+router.get(
+    "/edit/:inv_id",
+    Util.handleErrors(invController.editInventoryView)
+);
+
 module.exports = router;

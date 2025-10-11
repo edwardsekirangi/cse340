@@ -21,17 +21,36 @@ async function registerAccount(
         return null;
     }
 }
-
-async function checkExistingEmail(account_email) {
+/* *****************************
+ * Return account data using email address
+ * ***************************** */
+async function getAccountByEmail(account_email) {
     try {
-        const sql =
-            "SELECT account_email FROM public.account WHERE account_email = $1";
-        const result = await pool.query(sql, [account_email]);
-        return result.rowCount > 0;
+        const result = await pool.query(
+            "SELECT account_id, account_firstname, account_lastname, account_email, account_type, account_password FROM account WHERE account_email = $1",
+            [account_email]
+        );
+        return result.rows[0];
     } catch (error) {
-        console.error("DB query error:", error);
-        return error.message;
+        return new Error("No matching email found");
     }
 }
 
-module.exports = { registerAccount, checkExistingEmail };
+/********************************
+ * Check if the account exists
+ *******************************/
+async function checkExistingEmail(account_email) {
+    try {
+        const result = await pool.query(
+            "SELECT account_email FROM account WHERE account_email = $1",
+            [account_email]
+        );
+        // Return a boolean instead of rows
+        return result.rowCount > 0;
+    } catch (error) {
+        console.error("Database error in checkExistingEmail:", error);
+        throw error;
+    }
+}
+
+module.exports = { registerAccount, getAccountByEmail, checkExistingEmail };

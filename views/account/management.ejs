@@ -1,0 +1,19 @@
+<!-- views/account/management.ejs -->
+
+<h1>Account Management</h1>
+
+<!-- Flash messages -->
+<% if (messages && messages.notice) { %>
+  <div class="flash"><%= messages.notice %></div>
+<% } %>
+
+<!-- Error messages -->
+<% if (errors && errors.length > 0) { %>
+  <ul class="errors">
+    <% errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<p>You're logged in</p>

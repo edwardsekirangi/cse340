@@ -14,6 +14,7 @@ const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const utilities = require("./utilities/");
 const errorRoute = require("./routes/errorRoute");
+const cookieParser = require("cookie-parser");
 //Body parser
 const bodyParser = require("body-parser");
 
@@ -30,7 +31,6 @@ const pool = require("./database/");
 //app.use(express.json());
 
 //Session middleware
-
 app.use(
     session({
         store: new (require("connect-pg-simple")(session))({
@@ -50,9 +50,17 @@ app.use(function (req, res, next) {
     res.locals.messages = require("express-messages")(req, res);
     next();
 });
+
+//Cookie middleware
+app.use(cookieParser());
+
+//Token middleware
+app.use(utilities.checkJWTToken);
+
 //Body Parser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 /* ***********************
  * View Engine and Templates
  *************************/
